@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:lesson43/utils/app_constants.dart';
 import 'package:lesson43/views/widgets/custom_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   final ValueChanged<bool> onThemeChanged;
+  final ValueChanged<String> onBackgroundImageChanged;
   const HomeScreen({
     super.key,
     required this.onThemeChanged,
+    required this.onBackgroundImageChanged,
   });
 
   @override
@@ -21,6 +24,16 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       drawer: CustomDrawer(
         onThemeChanged: widget.onThemeChanged,
+        onBackgroundImageChanged: widget.onBackgroundImageChanged,
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: AppConstants.backgroundImageUrl.isEmpty
+              ? null
+              : DecorationImage(
+                  image: NetworkImage(AppConstants.backgroundImageUrl),
+                ),
+        ),
       ),
     );
   }

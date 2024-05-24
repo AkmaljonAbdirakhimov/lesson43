@@ -4,7 +4,12 @@ import 'package:lesson43/views/screens/settings_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
   final ValueChanged<bool> onThemeChanged;
-  const CustomDrawer({super.key, required this.onThemeChanged});
+  final ValueChanged<String> onBackgroundImageChanged;
+  const CustomDrawer({
+    super.key,
+    required this.onThemeChanged,
+    required this.onBackgroundImageChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +37,7 @@ class CustomDrawer extends StatelessWidget {
                   builder: (ctx) {
                     return HomeScreen(
                       onThemeChanged: onThemeChanged,
+                      onBackgroundImageChanged: onBackgroundImageChanged,
                     );
                   },
                 ),
@@ -50,6 +56,7 @@ class CustomDrawer extends StatelessWidget {
                   builder: (ctx) {
                     return SettingsScreen(
                       onThemeChanged: onThemeChanged,
+                      onBackgroundImageChanged: onBackgroundImageChanged,
                     );
                   },
                 ),

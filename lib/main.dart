@@ -19,6 +19,13 @@ class _MyAppState extends State<MyApp> {
     setState(() {});
   }
 
+  void changeBackgroundImage(String imageUrl) {
+    if (imageUrl.trim().isNotEmpty) {
+      AppConstants.backgroundImageUrl = imageUrl;
+      setState(() {});
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,6 +39,7 @@ class _MyAppState extends State<MyApp> {
       themeMode: AppConstants.themeMode,
       home: HomeScreen(
         onThemeChanged: toggleThemeMode,
+        onBackgroundImageChanged: changeBackgroundImage,
       ),
     );
   }
